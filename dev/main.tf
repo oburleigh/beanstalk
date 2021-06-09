@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_vpc" "default" {
-  cidr_block = var.vpc_cidr_block
+  cidr_block           = var.vpc_cidr_block
   enable_dns_hostnames = true
 }
 
@@ -47,7 +47,7 @@ resource "aws_route_table" "public" {
 resource "aws_route" "public" {
   route_table_id         = aws_route_table.public.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id         = aws_internet_gateway.main.id
+  gateway_id             = aws_internet_gateway.main.id
 }
 
 resource "aws_route_table_association" "public" {
@@ -77,18 +77,18 @@ resource "aws_route_table_association" "private_db" {
 }
 
 module "rds" {
-  source               = "../modules/database/rds"
-  allocated_storage    = var.db_allocated_storage
-  engine               = var.db_engine
-  engine_version       = var.db_engine_version
-  instance_class       = var.db_instance_class
-  name                 = var.db_name
-  username             = var.db_username
-  password             = var.db_password
-  parameter_group_name = var.db_parameter_group_name
-  skip_final_snapshot  = var.db_skip_final_snapshot
+  source                 = "../modules/database/rds"
+  allocated_storage      = var.db_allocated_storage
+  engine                 = var.db_engine
+  engine_version         = var.db_engine_version
+  instance_class         = var.db_instance_class
+  name                   = var.db_name
+  username               = var.db_username
+  password               = var.db_password
+  parameter_group_name   = var.db_parameter_group_name
+  skip_final_snapshot    = var.db_skip_final_snapshot
   vpc_security_group_ids = [aws_security_group.database.id]
-  db_subnet_group_name = aws_db_subnet_group.default.name
+  db_subnet_group_name   = aws_db_subnet_group.default.name
 }
 
 locals {
@@ -137,22 +137,22 @@ module "beanstalkenv" {
   load_balancer_type     = var.bse_load_balancer_type
   elb_scheme             = var.bse_elb_scheme
   instance_type          = var.bse_instance_type
-  elb_subnets =  aws_subnet.public.*.id
-  security_groups = aws_security_group.application.id
+  elb_subnets            = aws_subnet.public.*.id
+  security_groups        = aws_security_group.application.id
   # app_subnets = aws_subnet.private_app.*.id
   loadbalancer_managed_security_group = aws_security_group.lb.id
-  iam_instance_profile   = var.bse_iam_instance_profile
-  app_env                = local.env_vars
-  vpcid = aws_vpc.default.id
+  iam_instance_profile                = var.bse_iam_instance_profile
+  app_env                             = local.env_vars
+  vpcid                               = aws_vpc.default.id
 
-  autoscale_min = var.eb_autoscale_min
-  autoscale_max = var.eb_autoscale_max
-  autoscale_measure_name = var.eb_autoscale_measure_name
-  autoscale_statistic = var.eb_autoscale_statistic
-  autoscale_unit = var.eb_autoscale_unit
-  autoscale_lower_bound = var.eb_autoscale_lower_bound
+  autoscale_min             = var.eb_autoscale_min
+  autoscale_max             = var.eb_autoscale_max
+  autoscale_measure_name    = var.eb_autoscale_measure_name
+  autoscale_statistic       = var.eb_autoscale_statistic
+  autoscale_unit            = var.eb_autoscale_unit
+  autoscale_lower_bound     = var.eb_autoscale_lower_bound
   autoscale_lower_increment = var.eb_autoscale_lower_increment
-  autoscale_upper_bound = var.eb_autoscale_upper_bound
+  autoscale_upper_bound     = var.eb_autoscale_upper_bound
   autoscale_upper_increment = var.eb_autoscale_upper_increment
 }
 
