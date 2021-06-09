@@ -13,7 +13,7 @@ The chosen AWS solution for the pilot is [Elastic Beanstalk](https://aws.amazon.
 - Creation of S3 Bucket and Objects
 - Creation of Security - Security Groups, IAM Policies
 
-![High Level Architecture](demo_architecture.svg)
+![High Level Architecture](elbs.svg)
 
 ## Pre-requisites
 
@@ -53,6 +53,7 @@ Note when you [Terraform Destroy](https://www.terraform.io/docs/cli/commands/des
 
 ## In Progress
 
+- [] Add architecture diagram
 - [] Move EC2 Instances to dedicated Application Subnets
 - [] Extend component logging
 - [] Move state to S3 with Dynamo providing the locking
