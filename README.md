@@ -56,18 +56,19 @@ Note when you [Terraform Destroy](https://www.terraform.io/docs/cli/commands/des
 ## In Progress
 
 - [x] Add architecture diagram
-- [] Move EC2 Instances to dedicated Application Subnets
-- [] Extend component logging
-- [] Move state to S3 with Dynamo providing the locking
-- [] Add Rolling Updates
 - [x] Add Autoscaling
-- [] Add switch functionality to turn on/off certain modules
-- [] Move modules to own repositories
-- [] Create more flexibility in data structure to process more objects i.e. for_each
-- [] Split the existing Root module and create more state seperation together with wrapper script for executing commands with good user experience
-- [] Add workspaces
-- [] Enrich the current modules with the additional functionality provided by the Provider
-- [] Add Terratest tests
+- [ ] Add Rolling Deployments
+- [ ] Add Rolling Updates
+- [ ] Move EC2 Instances to dedicated Application Subnets
+- [ ] Extend component logging
+- [ ] Move state to S3 with Dynamo providing the locking
+- [ ] Add switch functionality to turn on/off certain modules
+- [ ] Move modules to own repositories
+- [ ] Create more flexibility in data structure to process more objects i.e. for_each
+- [ ] Split the existing Root module and create more state seperation together with wrapper script for executing commands with good user experience
+- [ ] Add workspaces
+- [ ] Enrich the current modules with the additional functionality provided by the Provider
+- [ ] Add Terratest tests
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
