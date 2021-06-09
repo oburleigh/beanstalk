@@ -67,13 +67,69 @@ resource "aws_elastic_beanstalk_environment" "flaskenv" {
       value     = var.loadbalancer_managed_security_group
   }
 
+#=========================Autoscale Configuration=====================
+
+  setting {
+      namespace = "aws:autoscaling:asg"
+      name      = "MinSize"
+      value     = var.autoscale_min
+      resource  = ""
+    }
+
+  setting {
+    namespace = "aws:autoscaling:asg"
+    name      = "MaxSize"
+    value     = var.autoscale_max
+    resource  = ""
+  }
+  setting {
+    namespace = "aws:autoscaling:trigger"
+    name      = "MeasureName"
+    value     = var.autoscale_measure_name
+  }
+
+  setting {
+    namespace = "aws:autoscaling:trigger"
+    name      = "Statistic"
+    value     = var.autoscale_statistic
+  }
+
+  setting {
+    namespace = "aws:autoscaling:trigger"
+    name      = "Unit"
+    value     = var.autoscale_unit
+  }
+
+  setting {
+    namespace = "aws:autoscaling:trigger"
+    name      = "LowerThreshold"
+    value     = var.autoscale_lower_bound
+  }
+
+  setting {
+    namespace = "aws:autoscaling:trigger"
+    name      = "LowerBreachScaleIncrement"
+    value     = var.autoscale_lower_increment
+  }
+
+  setting {
+    namespace = "aws:autoscaling:trigger"
+    name      = "UpperThreshold"
+    value     = var.autoscale_upper_bound
+  }
+
+  setting {
+    namespace = "aws:autoscaling:trigger"
+    name      = "UpperBreachScaleIncrement"
+    value     = var.autoscale_upper_increment
+  }
+
   dynamic "setting" {
     for_each = var.app_env
     content {
       namespace = "aws:elasticbeanstalk:application:environment"
       name      = setting.key
       value     = setting.value
-      resource  = ""
     }
   }
 }

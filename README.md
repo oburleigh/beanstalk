@@ -53,11 +53,12 @@ Note when you [Terraform Destroy](https://www.terraform.io/docs/cli/commands/des
 
 ## In Progress
 
-- [] Add architecture diagram
+- [x] Add architecture diagram
 - [] Move EC2 Instances to dedicated Application Subnets
 - [] Extend component logging
 - [] Move state to S3 with Dynamo providing the locking
-- [] Add Autoscaling
+- [] Add Rolling Updates
+- [x] Add Autoscaling
 - [] Add switch functionality to turn on/off certain modules
 - [] Move modules to own repositories
 - [] Create more flexibility in data structure to process more objects i.e. for_each

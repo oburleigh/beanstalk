@@ -144,6 +144,16 @@ module "beanstalkenv" {
   iam_instance_profile   = var.bse_iam_instance_profile
   app_env                = local.env_vars
   vpcid = aws_vpc.default.id
+
+  autoscale_min = var.eb_autoscale_min
+  autoscale_max = var.eb_autoscale_max
+  autoscale_measure_name = var.eb_autoscale_measure_name
+  autoscale_statistic = var.eb_autoscale_statistic
+  autoscale_unit = var.eb_autoscale_unit
+  autoscale_lower_bound = var.eb_autoscale_lower_bound
+  autoscale_lower_increment = var.eb_autoscale_lower_increment
+  autoscale_upper_bound = var.eb_autoscale_upper_bound
+  autoscale_upper_increment = var.eb_autoscale_upper_increment
 }
 
 resource "aws_elastic_beanstalk_application_version" "default" {

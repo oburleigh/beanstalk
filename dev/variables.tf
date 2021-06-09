@@ -147,3 +147,57 @@ variable "map_public_ip_on_launch_private" {
   description = "Subnet to be mapped to Public IP"
 
 }
+
+variable "eb_autoscale_min" {
+  type        = number
+  default     = 2
+  description = "Minumum instances to launch"
+}
+
+variable "eb_autoscale_max" {
+  type        = number
+  default     = 3
+  description = "Maximum instances to launch"
+}
+
+variable "eb_autoscale_measure_name" {
+  type        = string
+  default     = "CPUUtilization"
+  description = "Metric used for your Auto Scaling trigger"
+}
+
+variable "eb_autoscale_statistic" {
+  type        = string
+  default     = "Average"
+  description = "Statistic the trigger should use, such as Average"
+}
+
+variable "eb_autoscale_unit" {
+  type        = string
+  default     = "Percent"
+  description = "Unit for the trigger measurement, such as Bytes"
+}
+
+variable "eb_autoscale_lower_bound" {
+  type        = number
+  default     = 20
+  description = "Minimum level of autoscale metric to remove an instance"
+}
+
+variable "eb_autoscale_lower_increment" {
+  type        = number
+  default     = -1
+  description = "How many Amazon EC2 instances to remove when performing a scaling activity."
+}
+
+variable "eb_autoscale_upper_bound" {
+  type        = number
+  default     = 80
+  description = "Maximum level of autoscale metric to add an instance"
+}
+
+variable "eb_autoscale_upper_increment" {
+  type        = number
+  default     = 1
+  description = "How many Amazon EC2 instances to add when performing a scaling activity"
+}
