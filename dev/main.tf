@@ -141,7 +141,7 @@ module "beanstalkenv" {
   security_groups        = aws_security_group.application.id
   # app_subnets = aws_subnet.private_app.*.id
   loadbalancer_managed_security_group = aws_security_group.lb.id
-  loadbalancer_security_groups = [aws_security_group.lb.id, aws_security_group.application.id]
+  loadbalancer_security_groups        = [aws_security_group.lb.id, aws_security_group.application.id]
   iam_instance_profile                = var.bse_iam_instance_profile
   app_env                             = local.env_vars
   vpcid                               = aws_vpc.default.id
