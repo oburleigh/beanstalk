@@ -67,6 +67,12 @@ resource "aws_elastic_beanstalk_environment" "flaskenv" {
       value     = var.loadbalancer_managed_security_group
   }
 
+  setting {
+      namespace = "aws:elbv2:loadbalancer"
+      name      = "SecurityGroups"
+      value     = join(",", sort(var.loadbalancer_security_groups))
+  }
+
 #=========================Autoscale Configuration=====================
 
   setting {

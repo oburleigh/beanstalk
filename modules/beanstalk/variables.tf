@@ -77,6 +77,10 @@ variable "security_groups" {
   description = "A list of security groups to attach to the load balancer"
 }
 
+variable "loadbalancer_security_groups" {
+  description = "A list of security groups to attach to the load balancer"
+}
+
 #=========================Auto Scaling==============================
 
 variable "autoscale_min" {
